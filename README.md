@@ -1,29 +1,12 @@
 # InvokeMethodEncrypted
 
 This is a method to call another method into a .NET Framework Application.
-
-The strings encrypted are (in order):
-{"GetILGenerator", _
- "Load", _
- "GetType", _
- "CreateInstance", _
- "GetObjectValue", _
- "CallByName", _
- "Emit", _
- "EmitCall", _
- "Invoke"}
-{"Ldarg_0", _
- "Call", _
- "Ldarg_1", _
- "Callvirt", _
- "Ldarg_2", _
- "Ldc_I4_1", _
- "Ldarg_3", _
- "Ret"}
-{"System.Reflection.Assembly", _
- "System.Activator", _
- "System.Runtime.CompilerServices.RuntimeHelpers", _
- "Microsoft.VisualBasic.CompilerServices.Versioned"}
+ 
+ Update:
+ Hide the initilization of the dynamicmethod
+ Hide "GetMethod" Function
+ Hide Call
+ Hide IL Generation
  
  To use this method: 
  
